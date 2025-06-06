@@ -44,6 +44,8 @@ ENV PATH="/opt/venv/bin:$PATH"
 # Copy published .NET output
 COPY --from=build /out ./dotnet
 
+RUN chmod +x start.sh
+
 EXPOSE 5000
 
 CMD ["./start.sh"]
