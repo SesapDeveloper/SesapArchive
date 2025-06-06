@@ -45,7 +45,7 @@ Database: MySQL database hosted through Aiven <br/>
 This project is split up into multiple components, each with its own functionality and purpose. For more in depth detail, refer SESAP Design Document.
 
 #### React Frontend UI 
-Serves the content of the website, where users can view the different visualizations, narratives (interviews), purpose, and Recommendations. If a whitelisted user (which is verified via Google Sign-in) tries to post an interview, it sends a request to the backend controller with all of the required parameters. The same logic is applied if one of these users tries to delete an interview as well. The visualizations are also automatically updated and displayed to reflect any changes
+Serves the content of the website, where users can view the different visualizations, narratives (interviews), purpose, and Recommendations. If a whitelisted user (which is verified via Google Sign-in) tries to post an interview, it sends a request to the backend controller with all of the required parameters. The same logic is applied if one of these users tries to delete an interview as well. The visualizations are also automatically updated and displayed to reflect any changes.
 
 #### Backend Controller
 Acts as the routing capability of the project, and is connected to both the database as well as the Large Language Model. When a request for a new interview comes in, the controller will first verify that the user is whitelisted, store all of the requested parameters in a database, convert the transcript text into a .docx file, and run the LLM script. When deleting an interview, the controller will look for that interviews ID in the database, locate it, and remove it. 
@@ -55,9 +55,9 @@ For API documentation, refer to SESAP API Document.
 Runs in the background after each newly uploaded transcript, and outputs visualizations of the analyses generated. Once automatically initiated by the controller, it loads new transcripts into a vectorized database, which lets us use Retrieval Augmented Generation (RAG) when querying the LLM model. Using the OpenRouter API to query, the response is given in a JSON format, then loaded into MATLAB configuration, where it creates a bar chart and a word cloud of the analysis. 
 
 ## Access and Usage
-General users can visit the website to view the student interviews or look over the visualizations. If you are a whitelisted user working with the project, then you are allowed to submit new interviews to the archive. As it's a website, no download is needed.
+General users can visit the website to view the student interviews or look over the visualizations. If you are a whitelisted user working with the project, then you are allowed to submit new interviews to the archive. As it's a website, no download is needed. Admins have access to whitelist new users.
 
-Here is the link to the SESAP website [Insert link once deployed].
+Here is the link to the SESAP website: https://sesap-render.onrender.com/ 
 
 ## Deployment and Setup Procedures
 For step-by-step guide on the deployment process, maintenance, and troubleshooting, refer to SESAP-Deployment-Hosting-Documentation.

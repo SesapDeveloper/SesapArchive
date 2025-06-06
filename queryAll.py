@@ -3,6 +3,7 @@ import re
 import os
 from dotenv import load_dotenv
 from queryLLM import query_rag
+print("[PYTHON] queryAll.py started", flush=True)
 
 RESULTS_PATH = "./results/"
 RESULTS_FILE = os.path.join(RESULTS_PATH, " .json")  
@@ -52,8 +53,10 @@ def queryAll(transcriptFileNames):
             print(f"Skipping {filename} [results already exist.]") #avoid reprocessing
             continue
 
-        print(f"Processing: {filename}")
+        print(f"Querying LLM for {filename}...", flush=True)
         responseLLM = query_rag(filename) 
+        print(f"LLM response received for {filename}", flush=True)
+
         
         formattedResponse = formatJSON(responseLLM)
         saveResults(filename, formattedResponse)
